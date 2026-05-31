@@ -1,0 +1,24 @@
+[project]
+name = "vod"
+version = "0.1.0"
+description = "Video on Demand platform with AWS CDK, FastAPI, and ffmpeg transcoding"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+    "boto3>=1.38.0",
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+    "python-multipart>=0.0.20",
+]
+
+[project.optional-dependencies]
+worker = [
+    "boto3>=1.38.0",
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+]
+
+[project.scripts]
+vod-api = "uvicorn app:app --app-dir backend/src --host 0.0.0.0 --port 8000"
